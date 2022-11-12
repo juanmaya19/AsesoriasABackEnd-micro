@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+ asesorias-core:
+  container_name: 'asesorias-micro'
+  image: juanmaya19/asesorias-micro:v1
+  ports:
+   - "6001:3001"
+  networks:
+   - asesorias_micro
+networks:
+ asesorias_micro:
