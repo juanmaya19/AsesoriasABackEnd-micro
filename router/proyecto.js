@@ -10,6 +10,9 @@ const router = Router();
 
 router.get('/', async function (req, res) {
     try {
+        
+        console.log('Ambiente:', process.env.CONTAINER_HOST);
+
         const proyectos = await Proyecto.find().populate([
             {
                 path: 'cliente', select: 'nombre'
@@ -35,7 +38,7 @@ router.get('/', async function (req, res) {
 
 
 
-router.get('/:proyectoId', async function(req, res) {
+router.get('/:proyectoId', async function (req, res) {
     try {
         const proyecto = await Proyecto.findById(req.params.proyectoId);
         if (!proyecto) {

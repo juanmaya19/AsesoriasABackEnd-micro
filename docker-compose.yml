@@ -1,11 +1,35 @@
 version: '3.7'
 services:
- asesorias-core:
-  container_name: 'asesorias-micro'
+ asesorias-microservicio01:
+  container_name: 'asesorias-microservicio01'
   image: juanmaya19/asesorias-micro:v1
   ports:
-   - "6001:3001"
+   - "3001"
   networks:
-   - asesorias_micro
+   - asesorias
+  environment:
+   CONTAINER_HOST: asesorias-microservicio01
+ asesorias-microservicio02:
+  container_name: 'asesorias-microservicio02'
+  image: juanmaya19/asesorias-micro:v1
+  ports:
+   - "3001"
+  networks:
+   - asesorias
+  environment:
+   CONTAINER_HOST: asesorias-microservicio02   
+ load-balancer:
+  container_name: 'load-balancer'
+  image: load-balancer:v1
+  build:
+   context: ./load-balancer
+  ports:
+   - "8082:80"
+  networks:
+   - asesorias
+  depends_on:
+   - asesorias-microservicio01
+   - asesorias-microservicio02
+  restart: always
 networks:
- asesorias_micro:
+ asesorias:
