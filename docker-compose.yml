@@ -19,8 +19,8 @@ services:
   environment:
    CONTAINER_HOST: asesorias-microservicio02   
  load-balancer:
-  container_name: 'load-balancer'
-  image: load-balancer:v1
+  container_name: 'load-balancer-asesorias'
+  image: load-balancer-asesorias:v1
   build:
    context: ./load-balancer
   ports:
