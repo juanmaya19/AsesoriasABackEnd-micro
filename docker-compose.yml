@@ -24,7 +24,7 @@ services:
   build:
    context: ./load-balancer
   ports:
-   - "6068:80"
+   - "6066:80"
   networks:
    - asesorias
   depends_on:
