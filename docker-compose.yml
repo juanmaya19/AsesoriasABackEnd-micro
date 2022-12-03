@@ -4,7 +4,7 @@ services:
   container_name: 'asesorias-microservicio01'
   image: juanmaya19/asesorias-micro:v1
   ports:
-   - "6065:3001"
+   - "3001"
   networks:
    - asesorias
   environment:
@@ -13,7 +13,7 @@ services:
   container_name: 'asesorias-microservicio02'
   image: juanmaya19/asesorias-micro:v1
   ports:
-   - "6066:3001"
+   - "3001"
   networks:
    - asesorias
   environment:
@@ -24,7 +24,7 @@ services:
   build:
    context: ./load-balancer
   ports:
-   - "6067:80"
+   - "6042:80"
   networks:
    - asesorias
   depends_on:
